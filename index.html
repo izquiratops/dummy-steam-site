@@ -8,21 +8,31 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h3>Steam Login</h3>
-    <div class="text-input-wrapper">
-        <label for="username">Account name</label>
-        <input type="text" id="username" name="username">
-    </div>
-    <div class="text-input-wrapper">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-    </div>
-    <div>
+    <h4>Steam Login</h4>
+    <div class="list-wrapper">
+        <div class="labeled-items-grid">
+            <label for="username">Account name</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+
         <input type="checkbox" id="remember-credentials" name="remember-credentials">
         <label for="remember-credentials">Remember my password</label>
+
+        <div>
+            <button>Login</button>
+            <button>Cancel</button>
+        </div>
     </div>
-    <br>
-    <button>Login</button>
-    <button>Cancel</button>
+
+    <hr>
+
+    <div class="labeled-items-grid">
+        <label for="username">Need help with sign in?</label>
+        <button>I can't sign in...</button>
+        <label for="username">Don't have a Steam account?</label>
+        <button>Create a new account...</button>
+    </div>
 </body>
 </html>

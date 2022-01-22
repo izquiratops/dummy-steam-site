@@ -1,18 +1,11 @@
-/* @font-face {
-    font-family: "WineTahomaBit";
-    src: url("WineTahomaBit.ttf");
-} */
-
 :root {
     --background: #4C5844; /* hsl(96,12,30); */
     --input-background: #3E4637; /* hsl(92,12,24); */
     --font-primary: #FFFFFF; /* hsl(0,0,100); */
     --font-secondary: #848F7D; /* hsl(96,7,52); */
     --active-accent: #C3B44F; /* hsl(52,49,53); */
-    --input-radius: #374030; /* hsl(93,14,21); */
-    --input-radius-shadow: #636660; /* hsl(90,3,38); */
-    --button-radius: #696E65; /* hsl(93,4,41); */
-    --button-radius-shadow: #374030; /* hsl(93,14,21); */
+    --shadow-clear: #696E65; /* hsl(93,4,41); */
+    --shadow-dark: #374030; /* hsl(93,14,21); */
 }
 
 * {
@@ -22,79 +15,115 @@
 html, body {
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 36px;
 }
 
 body {
-    font-family: "ＭＳ Ｐゴシック";
+    font-family: Verdana;
     font-smooth: never;
-    -webkit-font-smoothing : none;
-
     color: var(--font-primary);
     background: var(--background);
 }
 
 button {
     border-radius: 0;
-    padding: 6px;
+    height: 1.8rem;
     background-color: var(--background);
     color: var(--font-primary);
     border: 1px solid;
-    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+    text-align: start;
 }
 
-.text-input-wrapper {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
+button:active {
+    color: var(--font-secondary);
+    background-color: var(--input-background);
+    border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
 }
 
 label {
     color: var(--font-secondary);
     user-select: none;
-    display: flex;
-    align-items: center;
+    transition: color 100ms ease;
+}
+
+/* Labeled item wrapper */
+.labeled-items-grid {
+    display: grid;
+    grid-template-columns: auto minmax(max-content, 1fr);
+    align-items: baseline;
+    gap: 8px;
+}
+
+.labeled-items-grid label {
+    text-align: end;
 }
 
 input {
+    height: 1.8rem;
     border: 1px solid;
     outline: none;
 }
 
+[type="checkbox"] + label {
+    display: flex;
+}
+
+/* Hide the default checkbox square */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     display: none;
 }
 
+/* Checkbox label checked */
 [type="checkbox"]:checked + label {
     color: var(--active-accent);
 }
 
+/* Checkbox square */
 [type="checkbox"] + label:before {
-    display: inline-block;
+    display: grid;
+    place-content: center;
     width: 1rem;
     height: 1rem;
     margin-right: 8px;
     border: 1px solid;
-    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     background: var(--input-background);
 }
 
+/* Checkbox square not checked */
 [type="checkbox"]:not(:checked) + label:before {
     content: '';
 }
 
+/* Checkbox square checked */
 [type="checkbox"]:checked + label:before {
-    content: '✕';
+    content: '✓';
 }
 
 [type="checkbox"]:checked {
     background: var(--input-background);
-    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     color: var(--active-accent);
 }
 
 [type="text"], [type="password"] {
     background: var(--input-background);
-    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     color: var(--font-primary);
+}
+
+hr {
+    border-top: 1px solid var(--shadow-clear);
+    border-bottom: 1px solid var(--shadow-dark);
+    border-right: 0;
+    border-left: 0;
+}
+
+.list-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 12px;
 }
