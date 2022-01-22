@@ -1,3 +1,9 @@
+/* @font-face {
+    font-family: "Tahoma";
+    src: url("Tahoma.ttf");
+} */
+
+
 :root {
     --background: #4C5844; /* hsl(96,12,30); */
     --input-background: #3E4637; /* hsl(92,12,24); */
@@ -16,11 +22,11 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: 36px;
+    padding: 6px;
 }
 
 body {
-    font-family: Verdana;
+    font-family: Tahoma, Verdana;
     font-smooth: never;
     color: var(--font-primary);
     background: var(--background);
@@ -42,32 +48,43 @@ button:active {
     border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
 }
 
-label {
-    color: var(--font-secondary);
-    user-select: none;
-    transition: color 100ms ease;
-}
-
 /* Labeled item wrapper */
-.labeled-items-grid {
+.form-grid {
     display: grid;
     grid-template-columns: auto minmax(max-content, 1fr);
     align-items: baseline;
     gap: 8px;
 }
 
-.labeled-items-grid label {
+.form-grid label {
     text-align: end;
 }
 
-input {
+label {
+    color: var(--font-secondary);
+    user-select: none;
+    transition: color 100ms ease;
+}
+
+/* <input> | <select> shared properties */
+[type="text"], [type="password"], select {
     height: 1.8rem;
     border: 1px solid;
     outline: none;
+    padding-left: 8px;
+    background: var(--input-background);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+    color: var(--font-primary);
+}
+
+select {
+    width: max-content;
 }
 
 [type="checkbox"] + label {
     display: flex;
+    align-items: center;
+    width: max-content;
 }
 
 /* Hide the default checkbox square */
@@ -109,12 +126,6 @@ input {
     color: var(--active-accent);
 }
 
-[type="text"], [type="password"] {
-    background: var(--input-background);
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    color: var(--font-primary);
-}
-
 hr {
     border-top: 1px solid var(--shadow-clear);
     border-bottom: 1px solid var(--shadow-dark);
@@ -122,7 +133,18 @@ hr {
     border-left: 0;
 }
 
-.list-wrapper {
+textarea {
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding-left: 8px;
+    border: 1px solid;
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+    background: var(--input-background);
+    color: var(--font-primary);
+}
+
+.vertical-align{
     display: flex;
     flex-flow: column nowrap;
     gap: 12px;
