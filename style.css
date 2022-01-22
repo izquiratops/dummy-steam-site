@@ -1,0 +1,100 @@
+/* @font-face {
+    font-family: "WineTahomaBit";
+    src: url("WineTahomaBit.ttf");
+} */
+
+:root {
+    --background: #4C5844; /* hsl(96,12,30); */
+    --input-background: #3E4637; /* hsl(92,12,24); */
+    --font-primary: #FFFFFF; /* hsl(0,0,100); */
+    --font-secondary: #848F7D; /* hsl(96,7,52); */
+    --active-accent: #C3B44F; /* hsl(52,49,53); */
+    --input-radius: #374030; /* hsl(93,14,21); */
+    --input-radius-shadow: #636660; /* hsl(90,3,38); */
+    --button-radius: #696E65; /* hsl(93,4,41); */
+    --button-radius-shadow: #374030; /* hsl(93,14,21); */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "ＭＳ Ｐゴシック";
+    font-smooth: never;
+    -webkit-font-smoothing : none;
+
+    color: var(--font-primary);
+    background: var(--background);
+}
+
+button {
+    border-radius: 0;
+    padding: 6px;
+    background-color: var(--background);
+    color: var(--font-primary);
+    border: 1px solid;
+    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+}
+
+.text-input-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+label {
+    color: var(--font-secondary);
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    border: 1px solid;
+    outline: none;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    display: none;
+}
+
+[type="checkbox"]:checked + label {
+    color: var(--active-accent);
+}
+
+[type="checkbox"] + label:before {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 8px;
+    border: 1px solid;
+    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    background: var(--input-background);
+}
+
+[type="checkbox"]:not(:checked) + label:before {
+    content: '';
+}
+
+[type="checkbox"]:checked + label:before {
+    content: '✕';
+}
+
+[type="checkbox"]:checked {
+    background: var(--input-background);
+    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    color: var(--active-accent);
+}
+
+[type="text"], [type="password"] {
+    background: var(--input-background);
+    border-color: var(--button-radius) var(--button-radius-shadow) var(--button-radius-shadow) var(--button-radius);
+    color: var(--font-primary);
+}
