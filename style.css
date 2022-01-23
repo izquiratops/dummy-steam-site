@@ -1,8 +1,11 @@
 /* @font-face {
-    font-family: "Tahoma";
-    src: url("Tahoma.ttf");
+    font-family: "Pixolletta8px";
+    src: url("Pixolletta8px.ttf");
 } */
 
+/* -------------------------------------------------------------------------- */
+/*                                Color scheme                                */
+/* -------------------------------------------------------------------------- */
 
 :root {
     --background: #4C5844; /* hsl(96,12,30); */
@@ -13,6 +16,10 @@
     --shadow-clear: #696E65; /* hsl(93,4,41); */
     --shadow-dark: #374030; /* hsl(93,14,21); */
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                   General                                  */
+/* -------------------------------------------------------------------------- */
 
 * {
     box-sizing: border-box;
@@ -28,18 +35,25 @@ html, body {
 body {
     font-family: Tahoma, Verdana;
     font-smooth: never;
+    -webkit-font-smoothing : none;
+
     color: var(--font-primary);
     background: var(--background);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                   Button                                   */
+/* -------------------------------------------------------------------------- */
+
 button {
     border-radius: 0;
     height: 1.8rem;
+    text-align: start;
+    cursor: pointer;
     background-color: var(--background);
     color: var(--font-primary);
     border: 1px solid;
     border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    text-align: start;
 }
 
 button:active {
@@ -48,7 +62,15 @@ button:active {
     border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
 }
 
-/* Labeled item wrapper */
+button:focus {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Form layout                                */
+/* -------------------------------------------------------------------------- */
+
 .form-grid {
     display: grid;
     grid-template-columns: auto minmax(max-content, 1fr);
@@ -60,17 +82,13 @@ button:active {
     text-align: end;
 }
 
-label {
-    color: var(--font-secondary);
-    user-select: none;
-    transition: color 100ms ease;
-}
+/* -------------------------------------------------------------------------- */
+/*                           Input global properties                          */
+/* -------------------------------------------------------------------------- */
 
-/* <input> | <select> shared properties */
-[type="text"], [type="password"], select {
+input, select {
     height: 1.8rem;
     border: 1px solid;
-    outline: none;
     padding-left: 8px;
     background: var(--input-background);
     border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
@@ -78,13 +96,23 @@ label {
 }
 
 select {
-    width: max-content;
+    cursor: pointer;
 }
+
+label {
+    color: var(--font-secondary);
+    user-select: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Checkbox                                  */
+/* -------------------------------------------------------------------------- */
 
 [type="checkbox"] + label {
     display: flex;
     align-items: center;
     width: max-content;
+    cursor: pointer;
 }
 
 /* Hide the default checkbox square */
@@ -126,11 +154,16 @@ select {
     color: var(--active-accent);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Other elements                               */
+/* -------------------------------------------------------------------------- */
+
 hr {
     border-top: 1px solid var(--shadow-clear);
     border-bottom: 1px solid var(--shadow-dark);
     border-right: 0;
     border-left: 0;
+    margin: 1rem 0;
 }
 
 textarea {
@@ -142,6 +175,16 @@ textarea {
     border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     background: var(--input-background);
     color: var(--font-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Layout classes                               */
+/* -------------------------------------------------------------------------- */
+
+.window-wrapper {
+    display: grid;
+    place-content: center;
+    grid-template-columns: minmax(auto, 500px);
 }
 
 .vertical-align{

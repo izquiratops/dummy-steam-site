@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0">
-    <title>Steam Messenger</title>
+    <title>Steam Template</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="./manifest.json" />
     <script src="./main.js" async></script>
 </head>
+
 <body>
-    <h2>Steam Template</h2>
+    <div class="window-wrapper">
+        <h2>Steam Template</h2>
 
-    <div class="vertical-align">
-        <div class="form-grid">
-            <label for="language-select">Language</label>
-            <select id="language-select" name="language-select">
-                <option value="0">English</option>
-                <option value="1">Spanish</option>
-                <option value="2">Italian</option>
-            </select>
-        </div>
+        <div class="vertical-align">
+            <div>
+                <label for="language-select">Language</label>
+                <select id="language-select" name="language-select">
+                    <option value="0">English</option>
+                    <option value="1">Spanish</option>
+                    <option value="2">Italian</option>
+                </select>
+            </div>
 
-        <textarea readonly rows="5">
+            <textarea readonly rows="5">
 > This is a sexy textarea
-> You cant show your pretty commands to the world like this
-> Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
-> This is a sexy textarea
-> You cant show your pretty commands to the world like this
-> Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
-> This is a sexy textarea
-> You cant show your pretty commands to the world like this
+> You can show your pretty commands like this
 > Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
         </textarea>
 
+            <div class="form-grid">
+                <label for="username">Account name</label>
+                <input type="text" id="username" name="username" value="izquiratops">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="headcrabs">
+            </div>
+
+            <input type="checkbox" id="remember-credentials" name="remember-credentials" checked>
+            <label for="remember-credentials">Remember my password</label>
+
+            <div>
+                <button>Login</button>
+                <button>Cancel</button>
+            </div>
+        </div>
+
+        <hr>
+
         <div class="form-grid">
-            <label for="username">Account name</label>
-            <input type="text" id="username" name="username" value="izquiratops">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="headcrabs">
+            <label for="username">Need help with sign in?</label>
+            <button>I can't sign in...</button>
+            <label for="username">Don't have a Steam account?</label>
+            <button>Create a new account...</button>
         </div>
-
-        <input type="checkbox" id="remember-credentials" name="remember-credentials" checked>
-        <label for="remember-credentials">Remember my password</label>
-
-        <div>
-            <button>Login</button>
-            <button>Cancel</button>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="form-grid">
-        <label for="username">Need help with sign in?</label>
-        <button>I can't sign in...</button>
-        <label for="username">Don't have a Steam account?</label>
-        <button>Create a new account...</button>
     </div>
 </body>
+
 </html>

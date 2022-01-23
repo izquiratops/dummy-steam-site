@@ -1,0 +1,15 @@
+{
+    "short_name": "Steam Template",
+    "name": "Steam Template",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#4C5844",
+    "background_color": "#ffffff"
+  }
