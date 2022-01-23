@@ -30,17 +30,11 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: 6px;
 }
 
 html {
     font-family: Tahoma, Verdana;
-    font-smooth: never;
-    -webkit-font-smoothing : none;
     font-size: 14px;
-}
-
-body {
     color: var(--font-primary);
     background: var(--background);
 }
@@ -207,10 +201,12 @@ textarea {
     inset-block-end: 0;
     inset-inline: 0;
     padding-block-end: 5vh;
+    padding-inline-end: 5vh;
 
     /* Grid layout */
     display: grid;
-    place-content: center;
+    justify-items: end;
+    justify-content: end;
     gap: 1vh;
 
     /* Others */

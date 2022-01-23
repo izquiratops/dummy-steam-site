@@ -1,18 +1,12 @@
 const init = (): HTMLElement => {
     const node = document.createElement('section');
     node.classList.add('gui-toast-group');
-
-    const { firstElementChild } = document;
-    if (firstElementChild) {
-        firstElementChild.insertBefore(node, document.body);
-    } else {
-        throw Error('Can\'t find any element to be inserted before.')
-    }
+    document.firstElementChild?.insertBefore(node, document.body);
 
     return node;
 }
 
-const create = (message: string): HTMLOutputElement => {
+const createToast = (message: string): HTMLOutputElement => {
     const node = document.createElement('output');
     node.innerText = message;
     node.classList.add('gui-toast');
@@ -22,8 +16,45 @@ const create = (message: string): HTMLOutputElement => {
 }
 
 const addIntoGroup = (toast: HTMLOutputElement): void => {
-    // ...
+    const { matches: motionOK } = window.matchMedia(
+        '(prefers-reduced-motion: no-preference)'
+    );
+
+    Toaster.children.length && motionOK
+        ? flipToast(toast)
+        : Toaster.appendChild(toast)
 }
 
-const Toast = init()
+// FLIP stands for: First | Last | Invert | Play
+const flipToast = (toast: HTMLOutputElement): void => {
+    const first = Toaster.offsetHeight;
+    Toaster.appendChild(toast);
+
+    const last = Toaster.offsetHeight;
+    const invert = last - first;
+
+    const play = Toaster.animate([
+        { transform: `translateY(${invert}px)` },
+        { transform: `translateY(0)` }
+    ], {
+        duration: 150,
+        easing: 'ease-out'
+    })
+}
+
+const Toast = (message: string) => {
+    const toast = createToast(message);
+    addIntoGroup(toast);
+
+    return new Promise<void>(async (resolve, reject) => {
+        await Promise.allSettled(
+            toast.getAnimations().map((animation) => animation.finished)
+        );
+
+        Toaster.removeChild(toast);
+        resolve();
+    });
+}
+
+const Toaster = init()
 export default Toast;
