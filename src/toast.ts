@@ -1,4 +1,6 @@
 const init = (): HTMLElement => {
+    console.debug('hello!');
+
     const node = document.createElement('section');
     node.classList.add('gui-toast-group');
     document.firstElementChild?.insertBefore(node, document.body);
@@ -22,7 +24,7 @@ const addIntoGroup = (toast: HTMLOutputElement): void => {
 
     Toaster.children.length && motionOK
         ? flipToast(toast)
-        : Toaster.appendChild(toast)
+        : Toaster.appendChild(toast);
 }
 
 // FLIP stands for: First | Last | Invert | Play
@@ -33,20 +35,20 @@ const flipToast = (toast: HTMLOutputElement): void => {
     const last = Toaster.offsetHeight;
     const invert = last - first;
 
-    const play = Toaster.animate([
+    Toaster.animate([
         { transform: `translateY(${invert}px)` },
         { transform: `translateY(0)` }
     ], {
         duration: 150,
         easing: 'ease-out'
-    })
+    });
 }
 
 const Toast = (message: string) => {
     const toast = createToast(message);
     addIntoGroup(toast);
 
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<void>(async (resolve) => {
         await Promise.allSettled(
             toast.getAnimations().map((animation) => animation.finished)
         );
@@ -56,5 +58,5 @@ const Toast = (message: string) => {
     });
 }
 
-const Toaster = init()
+const Toaster = init();
 export default Toast;

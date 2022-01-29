@@ -33,7 +33,7 @@ html, body {
 }
 
 html {
-    font-family: Tahoma, Verdana;
+    font-family: Tahoma, Verdana, serif;
     font-size: 14px;
     color: var(--font-primary);
     background: var(--background);

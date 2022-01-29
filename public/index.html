@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0">
     <title>Steam Template</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./bundle.css">
     <link rel="manifest" href="./manifest.json" />
     <script src="./bundle.js" async></script>
 </head>
@@ -25,11 +25,12 @@
                 </select>
             </div>
 
-            <textarea readonly rows="5">
-> This is a sexy textarea
-> You can show your pretty commands like this
-> Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
-        </textarea>
+            <label for="console"></label>
+            <textarea id="console" readonly rows="5">
+            > This is a sexy textarea
+            > You can show your pretty commands like this
+            > Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
+            </textarea>
 
             <div class="form-grid">
                 <label for="username">Account name</label>

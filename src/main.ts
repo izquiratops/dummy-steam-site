@@ -1,4 +1,5 @@
 import Toast from './toast';
+import './style.css';
 
 const toastMessages = [
     'Gordon Freeman has logged in',
@@ -6,15 +7,15 @@ const toastMessages = [
     'Barney has disconnected',
 ]
 
-function init() {
-    const loginBtn = document.getElementById('login-btn');
-    loginBtn?.addEventListener('click', showRandomToast);
-}
-
 function showRandomToast() {
-    const idx = Math.floor(Math.random() * 3);
+    const idx = Math.floor(Math.random() * toastMessages.length);
     const message = toastMessages[idx];
     Toast(message);
 }
 
-init();
+function initialize() {
+    const loginBtn = document.getElementById('login-btn');
+    loginBtn?.addEventListener('click', showRandomToast);
+}
+
+window.addEventListener(('load'), initialize)
