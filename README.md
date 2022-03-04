@@ -5,7 +5,9 @@ https://www.matuzo.at/blog/2022/heres-what-i-didnt-know-about-where
 
 ### TODO's
 - [x] Toasts
-- [ ] Add HSL support
+- [x] Add HSL support
 - [ ] Split buttons
+- [ ] Options layout
+- [ ] Tabs
 - [ ] Tags
-- [ ] Use of :where() pseudo-class
+- [ ] PostCSS maybe?

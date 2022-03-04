@@ -1,7 +1,6 @@
-/* @font-face {
-    font-family: "Pixolletta8px";
-    src: url("Pixolletta8px.ttf");
-} */
+/* @custom-media --motionOK (prefers-reduced-motion: no-preference); */
+/* @custom-media --dark (prefers-color-scheme: dark); */
+/* @custom-media --light (prefers-color-scheme: light); */
 
 /* -------------------------------------------------------------------------- */
 /*                                Color scheme                                */
@@ -9,13 +8,13 @@
 
 :root {
     --font-size: 13px;
-    --background: #4C5844; /* hsl(96,12,30); */
-    --input-background: #3E4637; /* hsl(92,12,24); */
-    --font-primary: #FFFFFF; /* hsl(0,0,100); */
-    --font-secondary: #848F7D; /* hsl(96,7,52); */
-    --active-accent: #C3B44F; /* hsl(52,49,53); */
-    --shadow-clear: #696E65; /* hsl(93,4,41); */
-    --shadow-dark: #374030; /* hsl(93,14,21); */
+    --background: hsl(96 12% 30%);
+    --input-background: hsl(92 12% 24%);
+    --font-primary: hsl(0 0% 100%);
+    --font-secondary: hsl(96 7% 52%);
+    --active-accent: hsl(52 49% 53%);
+    --shadow-clear: hsl(93 4% 41%);
+    --shadow-dark: hsl(93 14% 21%);
 }
 
 /* -------------------------------------------------------------------------- */

@@ -1,6 +1,4 @@
 const init = (): HTMLElement => {
-    console.debug('hello!');
-
     const node = document.createElement('section');
     node.classList.add('gui-toast-group');
     document.firstElementChild?.insertBefore(node, document.body);
