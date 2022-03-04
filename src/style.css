@@ -2,12 +2,7 @@
 /* @custom-media --dark (prefers-color-scheme: dark); */
 /* @custom-media --light (prefers-color-scheme: light); */
 
-/* -------------------------------------------------------------------------- */
-/*                                Color scheme                                */
-/* -------------------------------------------------------------------------- */
-
 :root {
-    --font-size: 13px;
     --background: hsl(96 12% 30%);
     --input-background: hsl(92 12% 24%);
     --font-primary: hsl(0 0% 100%);
@@ -15,27 +10,48 @@
     --active-accent: hsl(52 49% 53%);
     --shadow-clear: hsl(93 4% 41%);
     --shadow-dark: hsl(93 14% 21%);
+
+    --space-xxs: .25rem;
+    --space-xs:  .5rem;
+    --space-sm:  1rem;
+    --space-md:  1.5rem;
+    --space-lg:  2rem;
+    --space-xl:  3rem;
+    --space-xxl: 6rem;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                                   General                                  */
 /* -------------------------------------------------------------------------- */
 
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-
 html {
-    font-family: Tahoma, Verdana, serif;
-    font-size: 14px;
+    block-size: 100%;
+    inline-size: 100%;
+}
+
+body {
+    min-block-size: 100%;
+    min-inline-size: 100%;
+
+    box-sizing: border-box;
+    padding-block: var(--space-xs);
+    margin: 0;
+
     color: var(--font-primary);
     background: var(--background);
+    font-family: Tahoma, Verdana, serif;
+    font-size: 14px;
+}
+
+main {
+    display: grid;
+    gap: var(--space-md);
+    place-content: center;
+    padding: var(--space-sm);
+}
+
+h1, h2, h3 {
+    margin: 0;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -43,10 +59,15 @@ html {
 /* -------------------------------------------------------------------------- */
 
 button {
-    border-radius: 0;
     height: 1.8rem;
-    text-align: start;
+    border-radius: 0;
     cursor: pointer;
+
+    text-align: start;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
     background-color: var(--background);
     color: var(--font-primary);
     border: 1px solid;
@@ -68,15 +89,51 @@ button:focus {
 /*                                 Form layout                                */
 /* -------------------------------------------------------------------------- */
 
-.form-grid {
-    display: grid;
-    grid-template-columns: auto minmax(max-content, 1fr);
-    align-items: baseline;
-    gap: 8px;
+section {
+  display: grid;
+  gap: var(--space-md);
+
+  min-width: min(600px, 60vw);
 }
 
-.form-grid label {
-    text-align: end;
+header {
+  display: grid;
+  gap: var(--space-xxs);
+}
+
+form {
+    display: grid;
+    gap: var(--space-xs);
+    grid-template-columns: repeat(auto minmax(min-content, 1fr));
+    align-items: baseline;
+}
+
+fieldset {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    gap: var(--space-xs);
+
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.input-fit-line {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+}
+
+.input-wide-line {
+    display: grid;
+    align-items: center;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-sm);
+}
+
+.justify-end {
+    justify-content: flex-end;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -86,7 +143,7 @@ button:focus {
 input, select {
     height: 1.8rem;
     border: 1px solid;
-    padding-left: 8px;
+    padding-left: var(--space-xs);
     background: var(--input-background);
     border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     color: var(--font-primary);
@@ -127,10 +184,10 @@ label {
 [type="checkbox"] + label:before {
     display: grid;
     place-content: center;
+    border: 1px solid;
     width: 1rem;
     height: 1rem;
-    margin-right: 8px;
-    border: 1px solid;
+    margin-right: var(--space-xs);
     border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
     background: var(--input-background);
 }
@@ -160,34 +217,17 @@ hr {
     border-bottom: 1px solid var(--shadow-dark);
     border-right: 0;
     border-left: 0;
-    margin: 1rem 0;
+    margin: 1px 0;
 }
 
 textarea {
     resize: none;
     outline: none;
-    width: 100%;
-    padding-left: 8px;
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+
     background: var(--input-background);
     color: var(--font-primary);
-}
-
-/* -------------------------------------------------------------------------- */
-/*                               Layout classes                               */
-/* -------------------------------------------------------------------------- */
-
-.window-wrapper {
-    display: grid;
-    place-content: center;
-    grid-template-columns: minmax(auto, 500px);
-}
-
-.vertical-align{
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 12px;
+    border: 1px solid;
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -199,14 +239,14 @@ textarea {
     z-index: 1;
     inset-block-end: 0;
     inset-inline: 0;
-    padding-block-end: 5vh;
-    padding-inline-end: 5vh;
+    padding-block-end: var(--space-md);
+    padding-inline-end: var(--space-md);
 
     /* Grid layout */
     display: grid;
     justify-items: end;
     justify-content: end;
-    gap: 1vh;
+    gap: var(--space-xs);
 
     /* Others */
     pointer-events: none;
@@ -219,7 +259,6 @@ textarea {
     max-inline-size: min(40ch, 90vw);
     padding-block: .8ch;
     padding-inline: 1ch;
-    font-size: 1rem;
 
     /* Color palette */
     border: 1px solid;
@@ -228,7 +267,7 @@ textarea {
 
     /* Animations */
     will-change: transform;
-    animation: 
+    animation:
         fade-in 300ms ease,
         slide-in 300ms ease,
         fade-out 300ms ease var(--_duration);

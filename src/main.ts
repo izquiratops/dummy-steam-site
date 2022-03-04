@@ -14,7 +14,7 @@ function showRandomToast() {
 }
 
 function initialize() {
-    const loginBtn = document.getElementById('login-btn');
+    const loginBtn = document.getElementById('help-btn');
     loginBtn?.addEventListener('click', showRandomToast);
 }
 

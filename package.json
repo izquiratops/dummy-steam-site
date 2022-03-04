@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Boilerplate project with Steam aesthetics",
   "scripts": {
-    "build": "esbuild src/main.ts --bundle --minify --outfile=public/bundle.js"
+    "build": "esbuild src/main.ts --bundle --minify --outfile=public/bundle.js",
+    "watch": "esbuild src/main.ts --bundle --watch --outfile=public/bundle.js"
   },
   "repository": {
     "type": "git",
