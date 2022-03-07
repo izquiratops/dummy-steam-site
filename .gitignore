@@ -1,3 +1,5 @@
 node_modules
-public/*.js
-public/*.css
+dist/*.js
+dist/*.css
+src/*.css.json
+.idea
