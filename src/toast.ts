@@ -1,7 +1,7 @@
 const init = (): HTMLElement => {
     const node = document.createElement('section');
     node.classList.add('gui-toast-group');
-    document.firstElementChild?.insertBefore(node, document.body);
+    document.body.appendChild(node);
 
     return node;
 }

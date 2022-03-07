@@ -1,62 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0">
     <title>Steam Template</title>
-    <link rel="stylesheet" href="./main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="./bundle.css">
     <link rel="manifest" href="./manifest.json"/>
-    <script src="main.js" async></script>
+    <script src="./bundle.js" async></script>
 </head>
 
 <body>
-<div class="window-wrapper">
-    <h2>Steam Template</h2>
+    <main>
+        <h1>Steam Template</h1>
 
-    <div class="vertical-align">
-        <div>
-            <label for="language-select">Language</label>
-            <select id="language-select" name="language-select">
-                <option value="0">English</option>
-                <option value="1">Spanish</option>
-                <option value="2">Italian</option>
-            </select>
-        </div>
+        <section>
+            <header>
+                <h3>Wellcome</h3>
+                <small>Join Steam and discover thousands of games to play.</small>
+            </header>
 
-        <label for="console"></label>
-        <textarea id="console" readonly rows="5">
-> This is a sexy textarea
-> You can show your pretty commands like this
-> Can't use cheat cvar fog_color in multiplayer, unless the server has sv_cheats set to 1.
-        </textarea>
+            <fieldset>
+                <div class="input-fit-line justify-end">
+                    <label for="language-select">Language</label>
+                    <select id="language-select" name="language-select">
+                        <option value="0">English</option>
+                        <option value="1">Spanish</option>
+                        <option value="2">Italian</option>
+                    </select>
+                </div>
 
-        <div class="form-grid">
-            <label for="username">Account name</label>
-            <input type="text" id="username" name="username" value="izquiratops">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="headcrabs">
-        </div>
+                <label for="console">Console</label>
+                <textarea id="console" rows="5" readonly></textarea>
 
-        <input type="checkbox" id="remember-credentials" name="remember-credentials" checked>
-        <label for="remember-credentials">Remember my password</label>
+                <form>
+                    <div class="input-wide-line">
+                        <label for="username">Account name</label>
+                        <input type="text" id="username" name="username" value="izquiratops">
+                    </div>
+                    <div class="input-wide-line">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" value="headcrabs">
+                    </div>
 
-        <div>
-            <button id="login-btn">Login</button>
-            <button id="cancel-btn">Cancel</button>
-        </div>
-    </div>
+                    <input type="checkbox"id="remember-credentials" name="remember-credenials" checked>
+                    <label for="remember-credentials">Remember my password</label>
 
-    <hr>
+                    <div class="input-fit-line justify-end">
+                        <button id="login-btn">Login</button>
+                        <button id="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </fieldset>
+        </section>
 
-    <div class="form-grid">
-        <label for="username">Need help with sign in?</label>
-        <button>I can't sign in...</button>
-        <label for="username">Don't have a Steam account?</label>
-        <button>Create a new account...</button>
-    </div>
-</div>
+        <hr>
+
+        <section>
+            <header>
+                <h3>Help</h3>
+            </header>
+
+            <fieldset>
+                <div class="input-wide-line">
+                    <label for="help-btn">Need help with sign in?</label>
+                    <button id="help-btn">I can't sign in</button>
+                </div>
+                <div class="input-wide-line">
+                    <label for="create-btn">Don't have a Steam account?</label>
+                    <button id="create-btn">Create a new account</button>
+                </div>
+            </fieldset>
+        </section>
+    </main>
 </body>
 
 </html>
