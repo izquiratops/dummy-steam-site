@@ -1,18 +1,14 @@
-/* @custom-media --motionOK (prefers-reduced-motion: no-preference); */
-/* @custom-media --dark (prefers-color-scheme: dark); */
-/* @custom-media --light (prefers-color-scheme: light); */
-
 :root {
-    --background: hsl(96 12% 30%);
-    --input-background: hsl(92 12% 24%);
-    --font-primary: hsl(0 0% 100%);
-    --font-secondary: hsl(96 7% 52%);
-    --active-accent: hsl(52 49% 53%);
-    --shadow-clear: hsl(93 4% 41%);
-    --shadow-dark: hsl(93 14% 21%);
+    --background:       hsl(96 12%  30%);
+    --input-background: hsl(92 12%  24%);
+    --font-primary:     hsl(0   0% 100%);
+    --font-secondary:   hsl(96  7%  52%);
+    --active-accent:    hsl(52 49%  53%);
+    --shadow-clear:     hsl(93  4%  41%);
+    --shadow-dark:      hsl(93 14%  21%);
 
-    --space-xxs: .25rem;
-    --space-xs:  .5rem;
+    --space-xxs: 0.25rem;
+    --space-xs:  0.5rem;
     --space-sm:  1rem;
     --space-md:  1.5rem;
     --space-lg:  2rem;
@@ -20,9 +16,34 @@
     --space-xxl: 6rem;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                   General                                  */
-/* -------------------------------------------------------------------------- */
+/* Used for Button & Toast */
+
+@define-placeholder green-light-box {
+    background-color: var(--background);
+    color: var(--font-primary);
+    border: 1px solid;
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+
+    &:active {
+         background-color: var(--input-background);
+         color: var(--font-secondary);
+         border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
+    }
+}
+
+/* Used for Input, Select, Checkbox & Textarea */
+
+@define-placeholder green-dark-box {
+    background-color: var(--input-background);
+    color: var(--font-primary);
+    border: 1px solid;
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+
+    &:checked {
+         color: var(--active-accent);
+         border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+    }
+}
 
 html {
     block-size: 100%;
@@ -37,10 +58,9 @@ body {
     padding-block: var(--space-xs);
     margin: 0;
 
-    color: var(--font-primary);
     background: var(--background);
+    color: var(--font-primary);
     font-family: Tahoma, Verdana, serif;
-    font-size: 14px;
 }
 
 main {
@@ -54,11 +74,7 @@ h1, h2, h3 {
     margin: 0;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                   Button                                   */
-/* -------------------------------------------------------------------------- */
-
-button {
+.square-btn {
     height: 1.8rem;
     border-radius: 0;
     cursor: pointer;
@@ -68,26 +84,13 @@ button {
     text-overflow: ellipsis;
     overflow: hidden;
 
-    background-color: var(--background);
-    color: var(--font-primary);
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-}
+    @extend green-light-box;
 
-button:active {
-    color: var(--font-secondary);
-    background-color: var(--input-background);
-    border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
+    &:focus {
+         text-decoration: underline;
+         text-decoration-style: dotted;
+    }
 }
-
-button:focus {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                 Form layout                                */
-/* -------------------------------------------------------------------------- */
 
 section {
   display: grid;
@@ -104,7 +107,7 @@ header {
 form {
     display: grid;
     gap: var(--space-xs);
-    grid-template-columns: repeat(auto minmax(min-content, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
     align-items: baseline;
 }
 
@@ -136,17 +139,11 @@ fieldset {
     justify-content: flex-end;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                           Input global properties                          */
-/* -------------------------------------------------------------------------- */
 
-input, select {
+.square-input {
     height: 1.8rem;
-    border: 1px solid;
     padding-left: var(--space-xs);
-    background: var(--input-background);
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    color: var(--font-primary);
+    @extend green-dark-box;
 }
 
 select {
@@ -158,11 +155,10 @@ label {
     user-select: none;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                  Checkbox                                  */
-/* -------------------------------------------------------------------------- */
+
 
 [type="checkbox"] + label {
+    /* TODO: flex? */
     display: flex;
     align-items: center;
     width: max-content;
@@ -188,8 +184,8 @@ label {
     width: 1rem;
     height: 1rem;
     margin-right: var(--space-xs);
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    background: var(--input-background);
+
+    @extend green-dark-box;
 }
 
 /* Checkbox square not checked */
@@ -202,15 +198,7 @@ label {
     content: '✓';
 }
 
-[type="checkbox"]:checked {
-    background: var(--input-background);
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    color: var(--active-accent);
-}
 
-/* -------------------------------------------------------------------------- */
-/*                               Other elements                               */
-/* -------------------------------------------------------------------------- */
 
 hr {
     border-top: 1px solid var(--shadow-clear);
@@ -220,19 +208,12 @@ hr {
     margin: 1px 0;
 }
 
-textarea {
+.console {
     resize: none;
     outline: none;
 
-    background: var(--input-background);
-    color: var(--font-primary);
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+    @extend green-dark-box;
 }
-
-/* -------------------------------------------------------------------------- */
-/*                                    Toast                                   */
-/* -------------------------------------------------------------------------- */
 
 .gui-toast-group {
     position: fixed;
@@ -260,10 +241,7 @@ textarea {
     padding-block: .8ch;
     padding-inline: 1ch;
 
-    /* Color palette */
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    background: var(--background);
+    @extend green-light-box;
 
     /* Animations */
     will-change: transform;

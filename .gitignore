@@ -4,3 +4,4 @@ dist/*.css
 src/*.css.json
 .idea
 .nova
+package-lock.json
