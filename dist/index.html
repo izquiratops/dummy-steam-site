@@ -1,78 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
+  <head>
     <title>Steam Template</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
-    <link rel="manifest" href="./manifest.json"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="manifest" href="./manifest.json" />
     <script src="./main.js" async></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <h1>Steam Template</h1>
+      <h1>Steam Template</h1>
 
+      <form>
         <section>
-            <header>
-                <h3>Wellcome</h3>
-                <small>Join Steam and discover thousands of games to play.</small>
-            </header>
+          <header>
+            <h3>Wellcome</h3>
+            <small>Join Steam and discover thousands of games to play.</small>
+          </header>
 
-            <fieldset>
-                <div class="input-fit-line justify-end">
-                    <label for="language-select">Language</label>
-                    <select class="square-input" id="language-select" name="language-select">
-                        <option value="0">English</option>
-                        <option value="1">Spanish</option>
-                        <option value="2">Italian</option>
-                    </select>
-                </div>
+          <fieldset>
+            <div class="fieldset-item">
+              <label for="language-select" aria-hidden="true">Language</label>
+              <select id="language-select" name="language-select">
+                <option value="0">English</option>
+                <option value="1">Spanish</option>
+                <option value="2">Italian</option>
+              </select>
+            </div>
 
-                <label for="console">Console</label>
-                <textarea class="console" id="console" rows="5" readonly></textarea>
+            <div class="fieldset-item input-stack">
+              <label for="console" aria-hidden="true">Console</label>
+              <textarea id="console" rows="5" readonly></textarea>
+            </div>
 
-                <form>
-                    <div class="input-wide-line">
-                        <label for="username">Account name</label>
-                        <input class="square-input" type="text" id="username" name="username" value="izquiratops">
-                    </div>
-                    <div class="input-wide-line">
-                        <label for="password">Password</label>
-                        <input class="square-input" type="password" id="password" name="password" value="headcrabs">
-                    </div>
+            <div class="fieldset-item">
+              <label for="username" aria-hidden="true">Account name</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value="izquiratops"
+              />
+            </div>
 
-                    <input type="checkbox"id="remember-credentials" name="remember-credenials" checked>
-                    <label for="remember-credentials">Remember my password</label>
+            <div class="fieldset-item">
+              <label for="password" aria-hidden="true">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value="headcrabs"
+              />
+            </div>
 
-                    <div class="input-fit-line justify-end">
-                        <button class="square-btn" id="login-btn">Login</button>
-                        <button class="square-btn" id="cancel-btn">Cancel</button>
-                    </div>
-                </form>
-            </fieldset>
+            <div class="fieldset-item">
+              <input
+                type="checkbox"
+                id="remember-credentials"
+                name="remember-credenials"
+                checked
+              />
+              <label for="remember-credentials" aria-hidden="true"
+                >Remember my password</label
+              >
+            </div>
+
+            <hr />
+
+            <div class="fieldset-item">
+              <button id="login-btn" type="button">Login</button>
+              <button id="cancel-btn" type="button">Cancel</button>
+            </div>
+          </fieldset>
         </section>
 
-        <hr>
-
         <section>
-            <header>
-                <h3>Help</h3>
-            </header>
+          <header>
+            <h3>Help</h3>
+          </header>
 
-            <fieldset>
-                <div class="input-wide-line">
-                    <label for="help-btn">Need help with sign in?</label>
-                    <button class="square-btn" id="help-btn">I can't sign in</button>
-                </div>
-                <div class="input-wide-line">
-                    <label for="create-btn">Don't have a Steam account?</label>
-                    <button class="square-btn" id="create-btn">Create a new account</button>
-                </div>
-            </fieldset>
+          <fieldset>
+            <div class="fieldset-item">
+              <label for="help-btn">Need help with sign in?</label>
+              <button id="help-btn" type="button">I can't sign in</button>
+            </div>
+            <div class="fieldset-item">
+              <label for="create-btn">Don't have a Steam account?</label>
+              <button id="create-btn" type="button">
+                Create a new account
+              </button>
+            </div>
+          </fieldset>
         </section>
+      </form>
     </main>
-</body>
-
+  </body>
 </html>

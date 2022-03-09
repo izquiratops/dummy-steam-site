@@ -1,23 +1,23 @@
-const {build} = require('esbuild');
-const postCssPlugin = require('@izquiratops/esbuild-postcss');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssExtend = require('postcss-extend');
+const { build } = require("esbuild");
+const postCssPlugin = require("@izquiratops/esbuild-postcss");
+const postcssPresetEnv = require("postcss-preset-env");
+const postcssExtend = require("postcss-extend");
 
 build({
-    entryPoints: ['./src/main.ts'],
-    outdir: './dist',
-    bundle: true,
-    sourcemap: true,
-    plugins: [
-        postCssPlugin.default({
-            plugins: [
-                postcssExtend,
-                postcssPresetEnv({
-                    features: {
-                        'nesting-rules': true
-                    }
-                })
-            ]
-        })
-    ]
-})
+  entryPoints: ["./src/main.ts"],
+  outdir: "./dist",
+  bundle: true,
+  watch: true,
+  plugins: [
+    postCssPlugin.default({
+      plugins: [
+        postcssPresetEnv({
+          features: {
+            "nesting-rules": true,
+          },
+        }),
+        postcssExtend,
+      ],
+    }),
+  ],
+});

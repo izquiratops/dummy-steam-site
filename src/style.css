@@ -1,102 +1,100 @@
 :root {
-    --background:       hsl(96 12%  30%);
-    --input-background: hsl(92 12%  24%);
-    --font-primary:     hsl(0   0% 100%);
-    --font-secondary:   hsl(96  7%  52%);
-    --active-accent:    hsl(52 49%  53%);
-    --shadow-clear:     hsl(93  4%  41%);
-    --shadow-dark:      hsl(93 14%  21%);
+  --background: hsl(96 12% 30%);
+  --input-background: hsl(92 12% 24%);
+  --font-primary: hsl(0 0% 100%);
+  --font-secondary: hsl(96 7% 52%);
+  --active-accent: hsl(52 49% 53%);
+  --shadow-clear: hsl(93 4% 41%);
+  --shadow-dark: hsl(93 14% 21%);
 
-    --space-xxs: 0.25rem;
-    --space-xs:  0.5rem;
-    --space-sm:  1rem;
-    --space-md:  1.5rem;
-    --space-lg:  2rem;
-    --space-xl:  3rem;
-    --space-xxl: 6rem;
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 6rem;
 }
 
 /* Used for Button & Toast */
 
 @define-placeholder green-light-box {
-    background-color: var(--background);
-    color: var(--font-primary);
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+  background: var(--background);
+  color: var(--font-primary);
+  border: 1px solid;
+  border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark)
+    var(--shadow-clear);
 
-    &:active {
-         background-color: var(--input-background);
-         color: var(--font-secondary);
-         border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear) var(--shadow-dark);
-    }
+  &:active {
+    background: var(--input-background);
+    color: var(--font-secondary);
+    border-color: var(--shadow-dark) var(--shadow-clear) var(--shadow-clear)
+      var(--shadow-dark);
+  }
 }
 
 /* Used for Input, Select, Checkbox & Textarea */
 
 @define-placeholder green-dark-box {
-    background-color: var(--input-background);
-    color: var(--font-primary);
-    border: 1px solid;
-    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
+  background-color: var(--input-background);
+  color: var(--font-primary);
+  border: 1px solid;
+  border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark)
+    var(--shadow-clear);
 
-    &:checked {
-         color: var(--active-accent);
-         border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark) var(--shadow-clear);
-    }
+  &:checked {
+    color: var(--active-accent);
+    border-color: var(--shadow-clear) var(--shadow-dark) var(--shadow-dark)
+      var(--shadow-clear);
+  }
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
 html {
-    block-size: 100%;
-    inline-size: 100%;
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 body {
-    min-block-size: 100%;
-    min-inline-size: 100%;
+  min-block-size: 100%;
+  min-inline-size: 100%;
 
-    box-sizing: border-box;
-    padding-block: var(--space-xs);
-    margin: 0;
+  box-sizing: border-box;
+  padding-block: var(--space-xs);
+  margin: 0;
 
-    background: var(--background);
-    color: var(--font-primary);
-    font-family: Tahoma, Verdana, serif;
+  background: var(--background);
+  color: var(--font-primary);
+  font-family: system-ui, sans-serif;
 }
 
 main {
-    display: grid;
-    gap: var(--space-md);
-    place-content: center;
-    padding: var(--space-sm);
-}
+  display: grid;
+  gap: var(--space-md);
+  place-content: center;
+  padding: var(--space-sm);
 
-h1, h2, h3 {
-    margin: 0;
-}
-
-.square-btn {
-    height: 1.8rem;
-    border-radius: 0;
-    cursor: pointer;
-
-    text-align: start;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    @extend green-light-box;
-
-    &:focus {
-         text-decoration: underline;
-         text-decoration-style: dotted;
+  @media (width >= 540px) {
+    & {
+      padding: var(--space-lg);
     }
+  }
+
+  @media (width >= 800px) {
+    & {
+      padding: var(--space-xl);
+    }
+  }
 }
 
 section {
   display: grid;
   gap: var(--space-md);
-
-  min-width: min(600px, 60vw);
 }
 
 header {
@@ -105,166 +103,197 @@ header {
 }
 
 form {
-    display: grid;
-    gap: var(--space-xs);
-    grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
-    align-items: baseline;
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(var(--times), minmax(min(10ch, 100%), 50ch));
+  align-items: flex-start;
+  max-width: 90vw;
+
+  --times: auto-fit;
+
+  @media (orientation: landscape) and (width >= 640px) {
+    & {
+      --times: 2;
+    }
+  }
 }
 
 fieldset {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    gap: var(--space-xs);
+  display: grid;
+  gap: 0;
 
-    border: 0;
-    padding: 0;
-    margin: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
-.input-fit-line {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-xs);
+.fieldset-item {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 2rem;
+  gap: var(--space-sm);
+  align-items: stretch;
+
+  padding-block: var(--space-xs);
+  padding-inline: 0;
+
+  & > label {
+    align-self: center;
+  }
+
+  &.input-stack {
+    grid-template-columns: 1fr;
+    gap: var(--space-xxs);
+  }
 }
 
-.input-wide-line {
-    display: grid;
-    align-items: center;
-    grid-template-columns: max-content 1fr;
-    gap: var(--space-sm);
+button {
+  @extend green-light-box;
+
+  border-radius: 0;
+  cursor: pointer;
+
+  text-align: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  &:focus {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
 }
 
-.justify-end {
-    justify-content: flex-end;
-}
+input {
+  @extend green-dark-box;
 
-
-.square-input {
-    height: 1.8rem;
-    padding-left: var(--space-xs);
-    @extend green-dark-box;
+  padding-left: var(--space-xs);
 }
 
 select {
-    cursor: pointer;
+  @extend green-dark-box;
+
+  cursor: pointer;
+  padding-left: var(--space-xs);
 }
 
 label {
-    color: var(--font-secondary);
-    user-select: none;
+  color: var(--font-secondary);
+  user-select: none;
 }
 
-
-
-[type="checkbox"] + label {
-    /* TODO: flex? */
+[type="checkbox"] {
+  & + label {
     display: flex;
     align-items: center;
     width: max-content;
     cursor: pointer;
-}
+  }
 
-/* Hide the default checkbox square */
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
+  /* Hide the default checkbox square */
+  &:not(:checked),
+  &:checked {
     display: none;
-}
+  }
 
-/* Checkbox label checked */
-[type="checkbox"]:checked + label {
+  /* Checkbox label checked */
+  &:checked + label {
     color: var(--active-accent);
+  }
+
+  /* Checkbox square not checked */
+  &:not(:checked) + label:before {
+    content: "";
+  }
+
+  /* Checkbox square checked */
+  &:checked + label:before {
+    content: "✓";
+  }
 }
 
+/* TODO: @extend not working with nested rules */
 /* Checkbox square */
 [type="checkbox"] + label:before {
-    display: grid;
-    place-content: center;
-    border: 1px solid;
-    width: 1rem;
-    height: 1rem;
-    margin-right: var(--space-xs);
+  @extend green-dark-box;
 
-    @extend green-dark-box;
+  display: grid;
+  place-content: center;
+
+  border: 1px solid;
+  width: 1rem;
+  height: 1rem;
+  margin-inline-end: var(--space-xs);
 }
-
-/* Checkbox square not checked */
-[type="checkbox"]:not(:checked) + label:before {
-    content: '';
-}
-
-/* Checkbox square checked */
-[type="checkbox"]:checked + label:before {
-    content: '✓';
-}
-
-
 
 hr {
-    border-top: 1px solid var(--shadow-clear);
-    border-bottom: 1px solid var(--shadow-dark);
-    border-right: 0;
-    border-left: 0;
-    margin: 1px 0;
+  border-top: 1px solid var(--shadow-clear);
+  border-bottom: 1px solid var(--shadow-dark);
+  border-right: 0;
+  border-left: 0;
+
+  margin: var(--space-md) 0;
 }
 
-.console {
-    resize: none;
-    outline: none;
+textarea {
+  @extend green-dark-box;
 
-    @extend green-dark-box;
+  resize: none;
+  outline: none;
 }
 
 .gui-toast-group {
-    position: fixed;
-    z-index: 1;
-    inset-block-end: 0;
-    inset-inline: 0;
-    padding-block-end: var(--space-md);
-    padding-inline-end: var(--space-md);
+  position: fixed;
+  z-index: 1;
+  inset-block-end: 0;
+  inset-inline: 0;
+  padding-block-end: var(--space-md);
+  padding-inline-end: var(--space-md);
 
-    /* Grid layout */
-    display: grid;
-    justify-items: end;
-    justify-content: end;
-    gap: var(--space-xs);
+  display: grid;
+  justify-items: end;
+  justify-content: end;
+  gap: var(--space-xs);
 
-    /* Others */
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .gui-toast {
-    --_duration: 3s;
-    --_travel-distance: 0;
+  --duration: 3s;
+  --travel-distance: 0;
 
-    max-inline-size: min(40ch, 90vw);
-    padding-block: .8ch;
-    padding-inline: 1ch;
+  @extend green-light-box;
 
-    @extend green-light-box;
+  max-inline-size: min(40ch, 90vw);
+  padding-block: 0.8ch;
+  padding-inline: 1ch;
 
-    /* Animations */
-    will-change: transform;
-    animation:
-        fade-in 300ms ease,
-        slide-in 300ms ease,
-        fade-out 300ms ease var(--_duration);
+  will-change: transform;
+  animation: fade-in 300ms ease, slide-in 300ms ease,
+    fade-out 300ms ease var(--duration);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .gui-toast {
-        --_travel-distance: 5vh;
-    }
+  .gui-toast {
+    --travel-distance: 5vh;
+  }
 }
 
 @keyframes fade-in {
-    from { opacity: 0; }
+  from {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-out {
-    to { opacity: 0; }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slide-in {
-    from { transform: translateY(var(--_travel-distance, 10px)); }
+  from {
+    transform: translateY(var(--travel-distance, 10px));
+  }
 }

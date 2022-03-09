@@ -1,6 +1,7 @@
 node_modules
 dist/*.js
 dist/*.css
+dist/*.map
 src/*.css.json
 .idea
 .nova
