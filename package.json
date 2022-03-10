@@ -17,14 +17,11 @@
   ],
   "author": "Jordi Izquierdo (izquiratops)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/izquiratops/steam-css-template/issues"
-  },
-  "homepage": "https://github.com/izquiratops/steam-css-template#readme",
   "devDependencies": {
     "@izquiratops/esbuild-postcss": "^1.0.0",
+    "autoprefixer": "^10.4.2",
     "esbuild": "^0.14.14",
-    "postcss-extend": "^1.0.5",
+    "postcss-mixins": "^9.0.2",
     "postcss-preset-env": "^7.4.2",
     "typescript": "^4.5.5"
   }

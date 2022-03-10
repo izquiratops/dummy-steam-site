@@ -1,22 +1,23 @@
 const { build } = require("esbuild");
 const postCssPlugin = require("@izquiratops/esbuild-postcss");
-const postcssPresetEnv = require("postcss-preset-env");
-const postcssExtend = require("postcss-extend");
+const postCssPresetEnv = require("postcss-preset-env");
+const postCssMixins = require("postcss-mixins");
+const postCssAutoprefixer = require("autoprefixer");
 
 build({
   entryPoints: ["./src/main.ts"],
   outdir: "./dist",
   bundle: true,
-  watch: true,
   plugins: [
     postCssPlugin.default({
       plugins: [
-        postcssPresetEnv({
+        postCssMixins,
+        postCssPresetEnv({
           features: {
             "nesting-rules": true,
           },
         }),
-        postcssExtend,
+        postCssAutoprefixer,
       ],
     }),
   ],

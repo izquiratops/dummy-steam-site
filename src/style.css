@@ -18,7 +18,7 @@
 
 /* Used for Button & Toast */
 
-@define-placeholder green-light-box {
+@define-mixin green-light-box {
   background: var(--background);
   color: var(--font-primary);
   border: 1px solid;
@@ -35,7 +35,7 @@
 
 /* Used for Input, Select, Checkbox & Textarea */
 
-@define-placeholder green-dark-box {
+@define-mixin green-dark-box {
   background-color: var(--input-background);
   color: var(--font-primary);
   border: 1px solid;
@@ -70,6 +70,7 @@ body {
 
   background: var(--background);
   color: var(--font-primary);
+
   font-family: system-ui, sans-serif;
 }
 
@@ -82,12 +83,6 @@ main {
   @media (width >= 540px) {
     & {
       padding: var(--space-lg);
-    }
-  }
-
-  @media (width >= 800px) {
-    & {
-      padding: var(--space-xl);
     }
   }
 }
@@ -103,19 +98,19 @@ header {
 }
 
 form {
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(var(--times), minmax(min(10ch, 100%), 50ch));
-  align-items: flex-start;
-  max-width: 90vw;
-
-  --times: auto-fit;
+  --layout: auto-fit;
 
   @media (orientation: landscape) and (width >= 640px) {
     & {
-      --times: 2;
+      --layout: 2;
     }
   }
+
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(var(--layout), minmax(min(10ch, 100%), 50ch));
+  align-items: flex-start;
+  max-width: 90vw;
 }
 
 fieldset {
@@ -128,11 +123,11 @@ fieldset {
   overflow: hidden;
 }
 
-.fieldset-item {
+@define-mixin fieldset-base $template, $gap {
   display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: 2rem;
-  gap: var(--space-sm);
+  grid-template-columns: $template;
+  grid-template-rows: min(2rem, 1fr);
+  gap: $gap;
   align-items: stretch;
 
   padding-block: var(--space-xs);
@@ -141,19 +136,25 @@ fieldset {
   & > label {
     align-self: center;
   }
+}
 
-  &.input-stack {
-    grid-template-columns: 1fr;
-    gap: var(--space-xxs);
-  }
+.fieldset-item {
+  @mixin fieldset-base repeat(auto-fit, minmax(min(10ch, 100%), 1fr)),
+    var(--space-sm);
+}
+
+.fieldset-stack {
+  @mixin fieldset-base 1fr, var(--space-xs);
 }
 
 button {
-  @extend green-light-box;
+  @mixin green-light-box;
 
   border-radius: 0;
+  padding: var(--space-xs);
   cursor: pointer;
 
+  /* font-size: 1rem; */
   text-align: start;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -166,16 +167,18 @@ button {
 }
 
 input {
-  @extend green-dark-box;
+  @mixin green-dark-box;
 
-  padding-left: var(--space-xs);
+  padding: var(--space-xs);
+  /* font-size: 1rem; */
 }
 
 select {
-  @extend green-dark-box;
+  @mixin green-dark-box;
 
   cursor: pointer;
-  padding-left: var(--space-xs);
+  padding: var(--space-xs);
+  /* font-size: 1rem; */
 }
 
 label {
@@ -183,7 +186,7 @@ label {
   user-select: none;
 }
 
-[type="checkbox"] {
+input[type="checkbox"] {
   & + label {
     display: flex;
     align-items: center;
@@ -195,6 +198,19 @@ label {
   &:not(:checked),
   &:checked {
     display: none;
+  }
+
+  /* Checkbox square */
+  & + label:before {
+    @mixin green-dark-box;
+
+    display: grid;
+    place-content: center;
+
+    border: 1px solid;
+    width: 1rem;
+    height: 1rem;
+    margin-inline-end: var(--space-xs);
   }
 
   /* Checkbox label checked */
@@ -213,20 +229,6 @@ label {
   }
 }
 
-/* TODO: @extend not working with nested rules */
-/* Checkbox square */
-[type="checkbox"] + label:before {
-  @extend green-dark-box;
-
-  display: grid;
-  place-content: center;
-
-  border: 1px solid;
-  width: 1rem;
-  height: 1rem;
-  margin-inline-end: var(--space-xs);
-}
-
 hr {
   border-top: 1px solid var(--shadow-clear);
   border-bottom: 1px solid var(--shadow-dark);
@@ -237,7 +239,7 @@ hr {
 }
 
 textarea {
-  @extend green-dark-box;
+  @mixin green-dark-box;
 
   resize: none;
   outline: none;
@@ -263,7 +265,7 @@ textarea {
   --duration: 3s;
   --travel-distance: 0;
 
-  @extend green-light-box;
+  @mixin green-light-box;
 
   max-inline-size: min(40ch, 90vw);
   padding-block: 0.8ch;
